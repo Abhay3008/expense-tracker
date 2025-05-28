@@ -1,0 +1,29 @@
+{
+	"List": [
+		{
+			"id": 1,
+			"amount": 23,
+			"description": "ciggarate",
+			"date": "2025-05-29"
+		},
+		{
+			"id": 2,
+			"amount": 23,
+			"description": "ciggarate",
+			"date": "2025-05-29"
+		},
+		{
+			"id": 3,
+			"amount": 23,
+			"description": "ciggarate",
+			"date": "2025-05-29"
+		},
+		{
+			"id": 4,
+			"amount": 23,
+			"description": "ciggarate",
+			"date": "2025-05-29"
+		}
+	],
+	"totalId": 4
+}
