@@ -6,6 +6,8 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"strconv"
+	"strings"
 	"time"
 )
 
@@ -21,17 +23,34 @@ type ExpenseList struct {
 	TotalId int `json:"totalId"`
 }
 
+var MonthsMap = map[int]string{
+	1:  "01",
+	2:  "02",
+	3:  "03",
+	4:  "04",
+	5:  "05",
+	6:  "06",
+	7:  "07",
+	8:  "08",
+	9:  "09",
+	10: "10",
+	11: "11",
+	12: "12",
+}
+
 const filename = "./expense.json"
 
 func main() {
-	err := AddExpense(23, "ciggarate")
-	if err != nil {
-		fmt.Print(err)
-	}
-	err = DeleteExpense(1)
-	if err != nil {
-		fmt.Print(err)
-	}
+	// err := AddExpense(23, "ciggarate")
+	// if err != nil {
+	// 	fmt.Print(err)
+	// }
+	// err = DeleteExpense(1)
+	// if err != nil {
+	// 	fmt.Print(err)
+	// }
+	total := ExpenseSummary(4)
+	fmt.Print(total)
 }
 
 func AddExpense(amount float32, description string) error {
@@ -67,6 +86,27 @@ func DeleteExpense(id int) error {
 		}
 	}
 	return errors.New("unable to find expense with id")
+}
+
+func ExpenseSummary(month ...int) int {
+	expenses := LoadJson()
+	total := 0
+	if len(month) < 1 {
+		for _, v := range expenses.List {
+			total += int(v.Amount)
+		}
+	} else {
+		year := strconv.Itoa(time.Now().Year())
+		month := MonthsMap[month[0]]
+		dateprefix := year + "-" + month
+		for _, v := range expenses.List {
+			if strings.HasPrefix(v.Date, dateprefix) {
+				total += int(v.Amount)
+			}
+		}
+	}
+	return total
+
 }
 
 func LoadJson() ExpenseList {
