@@ -4,13 +4,13 @@
 			"id": 1,
 			"amount": 23,
 			"description": "ciggarate",
-			"date": "2025-05-29"
+			"date": "2025-04-29"
 		},
 		{
 			"id": 2,
 			"amount": 23,
 			"description": "ciggarate",
-			"date": "2025-05-29"
+			"date": "2025-04-29"
 		},
 		{
 			"id": 3,
@@ -23,7 +23,25 @@
 			"amount": 23,
 			"description": "ciggarate",
 			"date": "2025-05-29"
+		},
+		{
+			"id": 5,
+			"amount": 0,
+			"description": "",
+			"date": "2025-06-02"
+		},
+		{
+			"id": 6,
+			"amount": 3,
+			"description": "new expense",
+			"date": "2025-06-02"
+		},
+		{
+			"id": 7,
+			"amount": 3.4,
+			"description": "new expense",
+			"date": "2025-06-02"
 		}
 	],
-	"totalId": 4
+	"totalId": 7
 }
