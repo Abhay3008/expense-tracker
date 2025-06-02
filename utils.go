@@ -159,7 +159,37 @@ func SaveJson(expenselist ExpenseList) error {
 }
 
 func Help() {
-	fmt.Println("This is help")
+	var text = `Usage: expense-tracker [command] [options]
+
+Commands:
+  add       Add a new expense
+            --description <text>   Description of the expense (required)
+            --amount <number>      Amount of the expense (required)
+
+  update    Update an existing expense
+            --id <number>          ID of the expense to update (required)
+            --description <text>   New description (optional)
+            --amount <number>      New amount (optional)
+
+  delete    Delete an expense
+            --id <number>          ID of the expense to delete (required)
+
+  list      List all expenses
+
+  summary   Show total expenses
+            --month <number>       (optional) Filter total by month (1–12)
+
+  help      Show this help message
+
+Examples:
+  expense-tracker add --description "Lunch" --amount 20
+  expense-tracker update --id 2 --description "Dinner" --amount 10
+  expense-tracker delete --id 2
+  expense-tracker list
+  expense-tracker summary
+  expense-tracker summary --month 8
+`
+	fmt.Println(text)
 }
 
 func PrintMajorseparator() {
