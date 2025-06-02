@@ -32,14 +32,8 @@
 		},
 		{
 			"id": 6,
-			"amount": 3,
-			"description": "new expense",
-			"date": "2025-06-02"
-		},
-		{
-			"id": 7,
-			"amount": 3.4,
-			"description": "new expense",
+			"amount": 20.9,
+			"description": "nklj",
 			"date": "2025-06-02"
 		}
 	],

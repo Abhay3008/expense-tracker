@@ -37,6 +37,20 @@ var MonthsMap = map[int]string{
 	11: "11",
 	12: "12",
 }
+var MonthstoString = map[int]string{
+	1:  "Jan",
+	2:  "Feb",
+	3:  "March",
+	4:  "April",
+	5:  "May",
+	6:  "June",
+	7:  "July",
+	8:  "Aug",
+	9:  "Sept",
+	10: "Oct",
+	11: "Nov",
+	12: "Dec",
+}
 
 func AddExpense(amount float64, description string) (int, error) {
 	expenses := LoadJson()
@@ -56,6 +70,27 @@ func AddExpense(amount float64, description string) (int, error) {
 	}
 	return id, nil
 
+}
+
+func UpdateExpense(id int, desc string, amount ...float64) error {
+	expenses := LoadJson()
+	for i, v := range expenses.List {
+		if v.Id == id {
+			if len(amount) > 0 {
+				expenses.List[i].Amount = amount[0]
+			}
+			if desc != "" {
+				expenses.List[i].Description = desc
+			}
+			err := SaveJson(expenses)
+			if err != nil {
+				fmt.Print(err)
+				os.Exit(1)
+			}
+			return nil
+		}
+	}
+	return errors.New("unable to find expense with id")
 }
 
 func DeleteExpense(id int) error {
@@ -125,4 +160,12 @@ func SaveJson(expenselist ExpenseList) error {
 
 func Help() {
 	fmt.Println("This is help")
+}
+
+func PrintMajorseparator() {
+	fmt.Println("---------------")
+}
+
+func PrintMinorseparator() {
+	fmt.Println("-------")
 }
